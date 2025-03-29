@@ -1,0 +1,17 @@
+version: '3.6'
+
+
+services:
+   
+   config-server:
+       image: config-server
+       networks:
+          - backend_network
+
+
+
+
+
+
+networks:
+   backend_network:
