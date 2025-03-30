@@ -4,9 +4,15 @@ version: '3.6'
 services:
    
    config-server:
-       image: config-server
-       networks:
+    image: config-server
+    networks:
           - backend_network
+   
+   consul:
+    image: consul:1.15
+    networks:
+      - backend_network
+    
 
 
 

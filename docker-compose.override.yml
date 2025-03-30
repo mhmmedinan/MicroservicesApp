@@ -3,12 +3,21 @@ version: '3.6'
 
 services:
     
-    config-server:
-       build: ./src/infrastructure/config-server
-       container_name: config-server
-       volumes:
-          - ./src/infrastructure/config-server:/app
-       environment:
-          SPRING_PROFILES_ACTIVE: prod
-       ports:
-        - 8889:8888
+   config-server:
+      build: ./src/infrastructure/config-server
+      container_name: config-server
+      volumes:
+         - ./src/infrastructure/config-server:/app
+      environment:
+         SPRING_PROFILES_ACTIVE: prod
+      ports:
+         - 8889:8888
+   
+   consul:
+    container_name: consul
+    ports:
+      - "8500:8500"        # Consul UI 
+    command: agent -dev -client=0.0.0.0
+    environment:
+         - CONSUL_BIND_INTERFACE=eth0
+      
