@@ -1,0 +1,23 @@
+﻿{
+  "Routes": [
+    {
+      "ServiceName": "ApiGateway",
+      "DownstreamPathTemplate": "/{everything}",
+      "UpstreamPathTemplate": "/{everything}",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "DownstreamScheme": "http",
+    "ReRoutesCaseSensitive": false,
+    "UseServiceDiscovery": true,
+    "ServiceDiscoveryProvider": {
+      "Host": "api-gateway",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}
