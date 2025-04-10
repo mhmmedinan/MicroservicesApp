@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QplyFoAHleA=",
+  "dgSpecHash": "jcnEQvCiR6A=",
   "success": true,
   "projectFilePath": "D:\\Projects\\MicroservicesApp\\src\\infrastructure\\ApiGateway\\ApiGateway\\ApiGateway.csproj",
   "expectedPackageFiles": [
@@ -12,7 +12,7 @@
     "C:\\Users\\Muhammed\\.nuget\\packages\\consul\\1.7.14.6\\consul.1.7.14.6.nupkg.sha512",
     "C:\\Users\\Muhammed\\.nuget\\packages\\core.abstractions\\1.0.0\\core.abstractions.1.0.0.nupkg.sha512",
     "C:\\Users\\Muhammed\\.nuget\\packages\\core.crosscuttingconcerns\\1.0.4\\core.crosscuttingconcerns.1.0.4.nupkg.sha512",
-    "C:\\Users\\Muhammed\\.nuget\\packages\\core.servicediscovery\\1.0.1\\core.servicediscovery.1.0.1.nupkg.sha512",
+    "C:\\Users\\Muhammed\\.nuget\\packages\\core.servicediscovery\\1.0.2\\core.servicediscovery.1.0.2.nupkg.sha512",
     "C:\\Users\\Muhammed\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\Muhammed\\.nuget\\packages\\elasticsearch.net\\7.17.5\\elasticsearch.net.7.17.5.nupkg.sha512",
     "C:\\Users\\Muhammed\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",

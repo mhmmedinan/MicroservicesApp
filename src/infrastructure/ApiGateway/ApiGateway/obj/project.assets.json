@@ -141,7 +141,7 @@
           "lib/net8.0/Core.CrossCuttingConcerns.dll": {}
         }
       },
-      "Core.ServiceDiscovery/1.0.1": {
+      "Core.ServiceDiscovery/1.0.2": {
         "type": "package",
         "dependencies": {
           "Consul": "1.7.14.3",
@@ -3280,13 +3280,13 @@
         "lib/net8.0/Core.CrossCuttingConcerns.dll"
       ]
     },
-    "Core.ServiceDiscovery/1.0.1": {
-      "sha512": "IsOycIAZ6n7MC6gzx5pMbBXBk6hk8wtUqhWuwRh17lnsozRORuV3Sz1s0HdvAsIoKX917tdFVTxV/X4Xk6fByA==",
+    "Core.ServiceDiscovery/1.0.2": {
+      "sha512": "U/jxfNMo0vL7z87D8lSpF7UUltZM6SwdJFitM8YnmkWGFt9G7c5yxcGZ/x9BzLUIn/Za3Zrc5ytH11B/a9xz3Q==",
       "type": "package",
-      "path": "core.servicediscovery/1.0.1",
+      "path": "core.servicediscovery/1.0.2",
       "files": [
         ".nupkg.metadata",
-        "core.servicediscovery.1.0.1.nupkg.sha512",
+        "core.servicediscovery.1.0.2.nupkg.sha512",
         "core.servicediscovery.nuspec",
         "lib/net9.0/Core.ServiceDiscovery.dll"
       ]
@@ -8247,7 +8247,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Core.CrossCuttingConcerns >= 1.0.4",
-      "Core.ServiceDiscovery >= 1.0.1",
+      "Core.ServiceDiscovery >= 1.0.2",
       "Microsoft.Extensions.Configuration >= 9.0.3",
       "Microsoft.Extensions.Configuration.Abstractions >= 9.0.3",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.21.2",
@@ -8314,7 +8314,7 @@
           },
           "Core.ServiceDiscovery": {
             "target": "Package",
-            "version": "[1.0.1, )"
+            "version": "[1.0.2, )"
           },
           "Microsoft.Extensions.Configuration": {
             "target": "Package",

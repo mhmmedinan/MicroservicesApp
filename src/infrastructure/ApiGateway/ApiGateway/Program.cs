@@ -1,4 +1,4 @@
-using Core.CrossCuttingConcerns.Exceptions.Extensions;
+ï»¿using Core.CrossCuttingConcerns.Exceptions.Extensions;
 using Core.ServiceDiscovery.Consul;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -8,19 +8,17 @@ using Steeltoe.Extensions.Configuration.ConfigServer;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost
-    .ConfigureAppConfiguration((hostingContext, config) =>
-    {
-        var env = hostingContext.HostingEnvironment;
-        config
+builder.WebHost.ConfigureAppConfiguration((hostingContext, config) =>
+{
+    var env = hostingContext.HostingEnvironment;
+    config
         .AddJsonFile("appsettings.json", true, true)
         .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
         .AddJsonFile("ocelot.json", optional: false, reloadOnChange: false)
         .AddJsonFile($"ocelot.{env.EnvironmentName}.json", optional: true)
         .AddConfigServer(env)
         .AddEnvironmentVariables();
-
-    });
+});
 
 builder.AddConfigServer();
 builder.Services.AddConsulServiceDiscovery(builder.Configuration, options =>
@@ -33,17 +31,12 @@ builder.Services.AddOcelot()
     .AddConsul()
     .AddPolly();
 builder.Services.AddControllers();
-// Add services to the container.
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+const string SERVICE_NAME = "ApiGateway";
 
-const string SERVÝCE_NAME = "ApiGateway";
-
-if (app.Environment.IsDevelopment())
-    app.ConfigureCustomExceptionMiddleware();
-if (app.Environment.IsProduction())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     app.ConfigureCustomExceptionMiddleware();
 
 app.UseCors(b => b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -54,22 +47,28 @@ app.UseEndpoints(config =>
 {
     config.MapGet("/", async context =>
     {
-        await context.Response.WriteAsync(SERVÝCE_NAME);
+        await context.Response.WriteAsync(SERVICE_NAME);
     });
     config.MapGet("/info", async context =>
     {
-        await context.Response.WriteAsync($"{SERVÝCE_NAME},running on {context.Request.Host}");
+        await context.Response.WriteAsync($"{SERVICE_NAME}, running on {context.Request.Host}");
     });
     config.MapGet("/api/values/health", () => Results.Ok("Healthy"));
-
 });
 
-app.UseOcelot().Wait();
-
 app.UseHttpsRedirection();
-
 app.MapControllers();
 
+app.Lifetime.ApplicationStarted.Register(() =>
+{
+    app.Logger.LogInformation("ðŸš€ ApiGateway started successfully!");
+});
+
+app.Lifetime.ApplicationStopped.Register(() =>
+{
+    app.Logger.LogInformation("ðŸ›‘ ApiGateway is shutting down...");
+});
+
+await app.UseOcelot();
+
 app.Run();
-
-
