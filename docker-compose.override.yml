@@ -11,7 +11,7 @@ services:
       environment:
          SPRING_PROFILES_ACTIVE: prod
       ports:
-         - 8889:8888
+         - 8888:8888
    
    consul:
     container_name: consul
@@ -20,4 +20,19 @@ services:
     command: agent -dev -client=0.0.0.0
     environment:
          - CONSUL_BIND_INTERFACE=eth0
+   
+   api-gateway:
+     container_name: api-gateway
+     environment:
+        ASPNETCORE_ENVIRONMENT: Production
+        SPRING__CLOUD__CONFIG__URI: http://config-server:8888
+        SPRING__CLOUD__CONFIG__NAME: api-gateway 
+        SPRING__CLOUD__CONFIG__PROFILE: prod 
+        SPRING__CLOUD__CONFIG__LABEL: master 
+     ports:
+        - 9500:8080
+     depends_on:
+        - config-server
+        - consul
+     
       
